@@ -1,0 +1,65 @@
+---
+title: "React SDK"
+---
+
+## Installation
+
+The npm package is located [here](https://www.npmjs.com/package/@wispfinance/react-sdk).
+
+Install with yarn:
+
+```bash
+yarn add @wispfinance/react-sdk
+```
+
+Install with npm:
+
+```bash
+npm install @wispfinance/react-sdk
+```
+
+## Usage
+
+Simply add our widget using the WispLink component as in the following example:
+
+```javascript
+import React from 'react';
+import { WispLink } from 'wisp-react-sdk';
+import { useRouter } from "next/router";
+
+const Home = ({checkoutId, userToken}) => {
+    const router = useRouter();
+
+    return (
+        <WispLink
+          style={{backgroundColor: '#1761CE', width: 150}}
+          token="public_SwTWrn69lQJXzMHGMYD34pKtcZ5bNFWvlQeP0gL2PePgFSDdFRyj2cUc2JbLDdFR"
+          customId="1"
+          priceId="dd9438cd-d7ad-4551-875b-9b148ffe875b"
+          cb={() => router.push(`/completed?checkoutId=${checkoutId}&token=${userToken}`)}
+        >
+          Subscribe with crypto
+        </WispLink>
+    )
+}
+
+export default Home;
+```
+
+### Props
+
+**token:** (Required) public API key from the Wisp dashboard
+
+**priceId:** (Required) Price ID of the product from the Wisp dashboard
+
+**cb:** (Required) Callback to be called upon completion of the checkout flow
+
+**customId:** (Optional) Custom ID to attach with the subscription.  This is usually the customer id or user id.
+
+**children?:** (Optional) children for WispLink for the button text. Will defualt to "Connect"
+
+**style?:** (Optional) React.CSSProperties to style your button
+
+## Get in touch
+
+If you would like to get in contact, join our [Discord](https://discord.gg/6BTfVQD6)
